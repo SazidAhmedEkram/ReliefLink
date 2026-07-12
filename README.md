@@ -1,235 +1,192 @@
-````md
 # ReliefLink – Disaster Relief & Shelter Management System
 
-> A console-based Python application for managing disaster relief operations, including affected family registration, relief inventory, shelter allocation, and statistical reporting.
+**ReliefLink** is a console-based Python application for managing disaster relief operations, including affected family registration, relief inventory, shelter allocation, and statistical reporting.
 
----
+## Project Overview
 
-## 📖 Project Overview
+Natural disasters such as floods, cyclones, and landslides affect thousands of families every year. Relief organizations often manage beneficiary information, relief supplies, and shelter allocation manually, which can lead to duplicate registrations, incorrect distributions, inventory shortages, and inefficient reporting.
 
-Natural disasters such as floods, cyclones, and landslides affect thousands of families every year. Relief organizations often manage beneficiary information, relief supplies, and shelter allocation manually, which may lead to duplicate registrations, incorrect distributions, inventory shortages, and inefficient reporting.
+ReliefLink helps solve these problems by providing a simple command-line system that stores data in JSON files and uses NumPy for basic analysis.
 
-**ReliefLink** is a console-based Disaster Relief Management System developed using **Python 3**, **NumPy**, and **JSON**. The system allows relief officers to register affected families, manage relief inventories, distribute relief packages, allocate shelters, and generate statistical reports for better decision-making.
+## Objectives
 
----
+* Digitize disaster relief management
+* Prevent duplicate family registration and relief distribution
+* Maintain relief inventory efficiently
+* Allocate shelters based on available capacity
+* Generate useful statistical reports using NumPy
+* Store all information permanently using JSON files
 
-## 🎯 Objectives
+## Target Users
 
-- Digitize disaster relief management.
-- Prevent duplicate family registration and relief distribution.
-- Maintain relief inventory efficiently.
-- Allocate shelters based on available capacity.
-- Generate useful statistical reports using NumPy.
-- Store all information permanently using JSON.
+* NGOs
+* Relief organizations
+* Volunteers
+* Disaster management teams
+* Local government authorities
 
----
+## Technologies Used
 
-## 👥 Target Users
+* Python 3
+* NumPy
+* JSON
+* Object-Oriented Programming (OOP)
+* Console-based interface
 
-- NGOs
-- Relief Organizations
-- Volunteers
-- Disaster Management Teams
-- Local Government Authorities
+## Features
 
----
+### Family Management
 
-# 🛠 Technology Stack
+* Register affected families
+* View all registered families
+* Search family by ID, name, or phone
+* Update family information
+* Delete family records
+* Prevent duplicate Family IDs
+* Validate user inputs
 
-- Python 3
-- NumPy
-- JSON
-- Object-Oriented Programming (OOP)
-- Console-Based Interface
+### Relief Inventory Management
 
----
+Manage relief items such as:
 
-# 📌 Features
+* Rice
+* Water
+* Blanket
+* Medicine
+* Baby food
+* Clothes
+* Hygiene kit
 
-## 1. Family Management
+Operations:
 
-- Register affected families
-- View all registered families
-- Search family by ID, Name, or Phone
-- Update family information
-- Delete family records
-- Prevent duplicate Family IDs
-- Validate user inputs
+* Add item
+* View inventory
+* Update quantity
+* Delete item
+* Low stock warning
 
----
+### Shelter Management
 
-## 2. Relief Inventory Management
+* Add shelter
+* View shelters
+* Search shelter
+* Update shelter
+* Delete shelter
+* Allocate family
+* Remove family
+* Validate capacity
 
-Manage relief items including:
+### Relief Distribution
 
-- Rice
-- Water
-- Blanket
-- Medicine
-- Baby Food
-- Clothes
-- Hygiene Kit
+* Search registered family
+* Select relief package
+* Distribute relief
+* Automatically update inventory
+* Prevent duplicate distribution
+* Save distribution history
 
-Operations
-
-- Add Item
-- View Inventory
-- Update Quantity
-- Delete Item
-- Low Stock Warning
-
----
-
-## 3. Shelter Management
-
-Manage temporary shelters.
-
-Features
-
-- Add Shelter
-- View Shelters
-- Search Shelter
-- Update Shelter
-- Delete Shelter
-- Allocate Family
-- Remove Family
-- Capacity Validation
-
----
-
-## 4. Relief Distribution
-
-- Search registered family
-- Select relief package
-- Distribute relief
-- Automatically update inventory
-- Prevent duplicate distribution
-- Save distribution history
-
----
-
-## 5. Reports
+### Reports
 
 Generate reports including:
 
-- Total Registered Families
-- Families Served
-- Families Waiting
-- Families by District
-- Families by Damage Level
-- Remaining Inventory
-- Shelter Occupancy
-- Distribution History
+* Total registered families
+* Families served
+* Families waiting
+* Families by district
+* Families by damage level
+* Remaining inventory
+* Shelter occupancy
+* Distribution history
 
----
+### Statistical Analysis
 
-## 6. Statistical Analysis (NumPy)
+Using NumPy, the system can calculate:
 
-Calculate
+* Average family size
+* Maximum family members
+* Minimum family members
+* Total affected people
+* Percentage of families served
+* High priority family count
+* Shelter occupancy rate
+* Average inventory remaining
 
-- Average Family Size
-- Maximum Family Members
-- Minimum Family Members
-- Total Affected People
-- Percentage of Families Served
-- High Priority Family Count
-- Shelter Occupancy Rate
-- Average Inventory Remaining
+## Data Storage
 
----
+All data is stored in JSON files.
 
-# 📂 Data Storage
-
-All information is stored using JSON files.
-
-```
+```text
 data/
-│
 ├── families.json
 ├── inventory.json
 ├── shelters.json
 └── distribution.json
 ```
 
-The application automatically loads existing data during startup and saves updated information before exiting.
+The application loads existing data at startup and saves updated information before exiting.
 
----
+## Data Structures Used
 
-# 📚 Data Structures Used
+* **List**: store families, shelters, inventory, and distribution records
+* **Tuple**: store fixed values such as damage levels and package types
+* **Set**: prevent duplicate relief distribution
+* **Dictionary**: store record details as key-value pairs
 
-| Data Structure | Purpose |
-|---------------|---------|
-| List | Store families, shelters, inventory, distribution records |
-| Tuple | Fixed values (Damage Levels, Package Types) |
-| Set | Prevent duplicate relief distribution |
-| Dictionary | Store record details as key-value pairs |
+## Object-Oriented Design
 
----
+### Family
 
-# 🏗 Object-Oriented Design
+Stores:
 
-## Family
+* Family ID
+* Head name
+* Phone
+* District
+* Village
+* Members
+* Damage level
+* Shelter needed
+* Relief status
 
-Attributes
+### InventoryItem
 
-- Family ID
-- Head Name
-- Phone
-- District
-- Village
-- Members
-- Damage Level
-- Shelter Needed
-- Relief Status
+Stores:
 
----
+* Item name
+* Quantity
 
-## InventoryItem
+### Shelter
 
-Attributes
+Stores:
 
-- Item Name
-- Quantity
+* Shelter ID
+* Shelter name
+* District
+* Capacity
+* Occupied seats
 
----
+### Distribution
 
-## Shelter
+Stores:
 
-Attributes
+* Family ID
+* Distributed items
+* Quantity
+* Date
 
-- Shelter ID
-- Shelter Name
-- District
-- Capacity
-- Occupied Seats
+### ReliefManager
 
----
+Handles:
 
-## Distribution
+* All module coordination
+* JSON load/save
+* Reports
+* Statistics
+* Overall workflow
 
-Attributes
+## Main Menu
 
-- Family ID
-- Distributed Items
-- Quantity
-- Date
-
----
-
-## ReliefManager
-
-Responsibilities
-
-- Manage all modules
-- Load and save JSON files
-- Generate reports
-- Coordinate application workflow
-
----
-
-# 📋 Main Menu
-
-```
+```text
 =============================
 RELIEFLINK MAIN MENU
 =============================
@@ -241,17 +198,12 @@ RELIEFLINK MAIN MENU
 5. Reports & Statistics
 6. Save Data
 7. Exit
-
-Choose:
 ```
 
----
+## Project Structure
 
-# 📁 Project Structure
-
-```
+```text
 ReliefLink/
-│
 ├── main.py
 ├── manager.py
 ├── models.py
@@ -260,170 +212,99 @@ ReliefLink/
 ├── statistics.py
 ├── menu.py
 ├── utils.py
-│
 ├── data/
 │   ├── families.json
 │   ├── inventory.json
 │   ├── shelters.json
 │   └── distribution.json
-│
 └── README.md
 ```
 
----
-
-# ⚙ Workflow
-
-```
-Start Program
-      │
-Load JSON Files
-      │
-Display Main Menu
-      │
-Select Module
-      │
-Perform Operation
-      │
-Update Records
-      │
-Generate Reports (Optional)
-      │
-Save JSON Files
-      │
-Exit Program
-```
-
----
-
-# ⚠ Validation & Exception Handling
+## Validation and Exception Handling
 
 The system handles:
 
-- Invalid menu choices
-- Invalid numeric input
-- Duplicate Family IDs
-- Missing JSON files
-- Empty JSON files
-- Corrupted JSON data
-- Negative quantities
-- Shelter capacity overflow
-- Invalid phone numbers
+* Invalid menu choices
+* Invalid numeric input
+* Duplicate Family IDs
+* Missing JSON files
+* Empty JSON files
+* Corrupted JSON data
+* Negative quantities
+* Shelter capacity overflow
+* Invalid phone numbers
 
----
+## Team Members and Responsibilities
 
-# 👨‍💻 Team Members & Responsibilities
+### Sazid Ahmed Ekram
 
-## Sazid Ahmed Ekram (Project Lead)
+* Overall project architecture
+* Main menu and application flow
+* ReliefManager implementation
+* Module integration
+* Git repository management
+* Final testing
+* Documentation and presentation
 
-- Overall project architecture
-- Main menu and application flow
-- ReliefManager implementation
-- Module integration
-- Git repository management
-- Final testing
-- Documentation & presentation
+### Easha
 
----
+* Family class
+* Add family
+* View family
+* Search family
+* Update family
+* Delete family
+* Input validation
+* Duplicate ID prevention
 
-## Easha
+### Borshon
 
-### Family Management Module
+* Inventory management
+* Shelter management
+* Shelter allocation
+* Capacity validation
+* Inventory CRUD
 
-Responsibilities
+### Anurag
 
-- Family class
-- Add Family
-- View Family
-- Search Family
-- Update Family
-- Delete Family
-- Input Validation
-- Duplicate ID Prevention
+* JSON file handling
+* Exception handling
+* Report generation
+* Distribution history
+* NumPy statistical analysis
+* Data persistence
 
----
+## Future Improvements
 
-## Borshon
+* Tkinter GUI version
+* QR code family identification
+* Role-based login system
+* PDF report generation
+* SMS notification
+* Barcode-based inventory
+* Cloud database integration
+* Mobile application
+* GIS map integration
 
-### Inventory & Shelter Module
-
-Responsibilities
-
-- Inventory Management
-- Shelter Management
-- Shelter Allocation
-- Capacity Validation
-- Inventory CRUD
-
----
-
-## Anurag
-
-### File Handling & Statistics
-
-Responsibilities
-
-- JSON File Handling
-- Exception Handling
-- Report Generation
-- Distribution History
-- NumPy Statistical Analysis
-- Data Persistence
-
----
-
-# 🚀 Future Improvements
-
-- Tkinter GUI Version
-- QR Code Family Identification
-- Role-Based Login System
-- PDF Report Generation
-- SMS Notification
-- Barcode-Based Inventory
-- Cloud Database Integration
-- Mobile Application
-- GIS Map Integration
-
----
-
-# 📌 Course Learning Outcomes
+## Course Learning Outcomes
 
 This project demonstrates:
 
-- Variables & Data Types
-- Operators
-- Conditional Statements
-- Loops
-- Functions
-- Object-Oriented Programming
-- Lists
-- Tuples
-- Sets
-- Dictionaries
-- JSON File Handling
-- Exception Handling
-- NumPy
-- Modular Programming
+* Variables and data types
+* Operators
+* Conditional statements
+* Loops
+* Functions
+* Object-oriented programming
+* Lists
+* Tuples
+* Sets
+* Dictionaries
+* JSON file handling
+* Exception handling
+* NumPy
+* Modular programming
 
----
+## License
 
-# 📄 License
-
-This project is developed solely for academic purposes as part of the **Programming in Python (Mid-Term Project)** course.
-
----
-
-# ❤️ Acknowledgements
-
-We sincerely thank our course instructor for providing the project guidelines and encouraging us to develop a practical solution using Python fundamentals.
-
----
-
-**Project Name:** ReliefLink – Disaster Relief & Shelter Management System
-
-**Course:** Programming in Python
-
-**Semester:** Summer 2025–2026
-
-**Version:** 1.0.0
-````
+This project is developed for academic purposes as part of the **Programming in Python** mid-term project.
