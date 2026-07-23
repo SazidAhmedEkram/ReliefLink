@@ -15,7 +15,8 @@ def main():
 
         match(choice):
             case "1":
-                pass
+                import family_manager
+                family_manager.menu()   
             case "2":
                 pass
             case "3":
