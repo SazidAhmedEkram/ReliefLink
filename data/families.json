@@ -12,7 +12,7 @@
         "disabledMembers": 0,
         "damageLevel": "High",
         "shelterNeeded": true,
-        "receivedRelief": false
+        "receivedRelief": true
     },
     {
         "familyId": "F002",
@@ -27,7 +27,7 @@
         "disabledMembers": 0,
         "damageLevel": "Medium",
         "shelterNeeded": false,
-        "receivedRelief": false
+        "receivedRelief": true
     },
     {
         "familyId": "F003",
@@ -163,7 +163,6 @@
         "damageLevel": "High",
         "shelterNeeded": true,
         "receivedRelief": false
-
     },
     {
         "familyId": "F012",
@@ -179,7 +178,6 @@
         "damageLevel": "Medium",
         "shelterNeeded": true,
         "receivedRelief": false
-
     },
     {
         "familyId": "F013",
