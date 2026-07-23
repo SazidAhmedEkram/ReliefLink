@@ -23,7 +23,7 @@ def menu():
             case "2":
                 viw_shelter()
             case "3":
-                pass
+                search_shelter()
             case "4":
                 pass
             case "5":
@@ -41,7 +41,7 @@ def menu():
 
 
 # Load the data from the JSON
-# Convert the Json to Python's Dictionary
+# Convert the Json to Python's list of Dictionary
 def load_shelters():
     try:
         if os.path.exists("data/shelters.json"):
@@ -51,6 +51,7 @@ def load_shelters():
             print("Shelters.json not found")
     except json.JSONDecodeError:
         return []
+
 # Save the data to the JSON
 def save_shelters(data):
     try:
@@ -106,3 +107,73 @@ def viw_shelter():
         print(f"Shelter Capacity: {shelter["capacity"]}")
         print(f"Current Occupancy: {shelter['currentOccupancy']}")
         print("=============================")
+def search_shelter():
+    shelters = load_shelters()
+    print("============================")
+    print("1. Search Shelter By ID")
+    print("2. Search Shelter by Name")
+    print("3. Search Shelter by District")
+    print("4. Go Back")
+    print("============================")
+    choose = input("Enter your choice: ")
+
+    match(choose):
+        case "1":
+            shelter_id = int(input("Enter Shelter ID: "))
+
+            found = False
+
+            for shelter in shelters:
+                if shelter["shelterId"] == shelter_id:
+                    print("=============================")
+                    print(f"Shelter Id: {shelter["shelterId"]}")
+                    print(f"Shelter Name: {shelter["shelterName"]}")
+                    print(f"Shelter District: {shelter["district"]}")
+                    print(f"Shelter Capacity: {shelter["capacity"]}")
+                    print(f"Current Occupancy: {shelter['currentOccupancy']}")
+                    print("=============================")
+                    found = True
+                    break
+            if not found:
+                print("Shelters Not Found")
+
+        case "2":
+            name = input("Enter Shelter Name: ")
+
+            found = False
+
+            for shelter in shelters:
+                if shelter["shelterName"].lower() == name.lower():
+                    print("=============================")
+                    print(f"Shelter Id: {shelter["shelterId"]}")
+                    print(f"Shelter Name: {shelter["shelterName"]}")
+                    print(f"Shelter District: {shelter["district"]}")
+                    print(f"Shelter Capacity: {shelter["capacity"]}")
+                    print(f"Current Occupancy: {shelter['currentOccupancy']}")
+                    print("=============================")
+                    found = True
+                    break
+            if not found:
+                print("Shelters Not Found")
+
+        case "3":
+            district = input("Enter Shelter District: ")
+            found = False
+
+            for shelter in shelters:
+                if shelter["district"].lower() == district.lower():
+                    print("=============================")
+                    print(f"Shelter Id: {shelter["shelterId"]}")
+                    print(f"Shelter Name: {shelter["shelterName"]}")
+                    print(f"Shelter District: {shelter["district"]}")
+                    print(f"Shelter Capacity: {shelter["capacity"]}")
+                    print(f"Current Occupancy: {shelter['currentOccupancy']}")
+                    print("=============================")
+                    found = True
+
+            if not found:
+                print("Shelters Not Found")
+        case "4":
+            return
+        case _:
+            print("Invalid choice. Please try again.")

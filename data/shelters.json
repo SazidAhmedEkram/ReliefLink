@@ -19,5 +19,12 @@
         "district": "chittagong",
         "capacity": 400,
         "currentOccupancy": 0
+    },
+    {
+        "shelterId": 4,
+        "shelterName": "BAF Shaheen",
+        "district": "Dhaka",
+        "capacity": 900,
+        "currentOccupancy": 0
     }
 ]
