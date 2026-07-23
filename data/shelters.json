@@ -1,0 +1,23 @@
+[
+    {
+        "shelterId": 1,
+        "shelterName": "Civil Aviation",
+        "district": "Dhaka",
+        "capacity": 50,
+        "currentOccupancy": 0
+    },
+    {
+        "shelterId": 2,
+        "shelterName": "Dhonia Para",
+        "district": "Shylhet",
+        "capacity": 90,
+        "currentOccupancy": 0
+    },
+    {
+        "shelterId": 3,
+        "shelterName": "Dokkhin Nowa Para",
+        "district": "chittagong",
+        "capacity": 400,
+        "currentOccupancy": 0
+    }
+]

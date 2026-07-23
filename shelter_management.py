@@ -6,7 +6,7 @@ class ShelterManagement:
         self.shelterName = shelterName
         self.district = district
         self.capacity = capacity
-        self.currentOccurance = 0
+        self.currentOccupancy = 0
 
     # Load the data to the JSON files
     def to_shelter_json(self):
@@ -15,7 +15,6 @@ class ShelterManagement:
             "shelterName": self.shelterName,
             "district": self.district,
             "capacity": self.capacity,
-            "currentOccurance": self.currentOccurance
+            "currentOccupancy": self.currentOccupancy
         }
 
-    
