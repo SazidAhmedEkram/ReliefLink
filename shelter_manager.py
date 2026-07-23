@@ -27,7 +27,7 @@ def menu():
             case "4":
                 update_shelter()
             case "5":
-                pass
+                delete_shelter()
             case "6":
                 pass
             case "7":
@@ -276,3 +276,70 @@ def update_shelter():
     # Save updated data
     save_shelters(shelters)
     print("\nShelter Updated Successfully")
+
+def delete_shelter():
+    shelters = load_shelters()
+
+    if len(shelters) == 0:
+        print("Shelters Not Found")
+        return
+
+    print("============================")
+    print("Find out the shelter. Then You can Delete")
+    print("1. Search Shelter by ID")
+    print("2. Search Shelter by Name")
+    print("3. Go Back")
+    print("============================")
+
+    choose = input("Enter your choice: ")
+    found_shelter = None
+    match choose:
+        case "1":
+            shelter_id = int(input("Enter Shelter ID: "))
+            for shelter in shelters:
+                if shelter["shelterId"] == shelter_id:
+                    found_shelter = shelter
+                    break
+        case "2":
+            shelter_name = input("Enter Shelter Name: ")
+            for shelter in shelters:
+                if shelter["shelterName"].lower() == shelter_name.lower():
+                    found_shelter = shelter
+                    break
+        case "3":
+            return
+        case _:
+            print("Invalid choice. Please try again.")
+            return
+
+    # Check if shelter exists
+    if found_shelter is None:
+        print("Shelter Not Found")
+        return
+
+    # Display the shelter information before delete
+    print("\nShelter Found")
+    print("============================")
+    print("Shelter ID:", found_shelter["shelterId"])
+    print("Shelter Name:", found_shelter["shelterName"])
+    print("District:", found_shelter["district"])
+    print("Capacity:", found_shelter["capacity"])
+    print("Current Occupancy:", found_shelter["currentOccupancy"])
+
+
+    # Validation (Cannot delete of there is a current allocated families)
+    if found_shelter["currentOccupancy"] > 0:
+        print("\nCannot delete shelter.")
+        print("Shelter currently has allocated families.")
+        return
+
+
+    # Confirmation
+    confirm = input("\nAre you sure you want to delete? (Y/N): ")
+
+    if confirm.lower() == "y":
+        shelters.remove(found_shelter)
+        save_shelters(shelters)
+        print("Shelter deleted successfully.")
+    else:
+        print("Delete operation cancelled.")
