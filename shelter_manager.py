@@ -25,7 +25,7 @@ def menu():
             case "3":
                 search_shelter()
             case "4":
-                pass
+                update_shelter()
             case "5":
                 pass
             case "6":
@@ -180,22 +180,99 @@ def search_shelter():
 
 def update_shelter():
     shelters = load_shelters()
+
     if len(shelters) == 0:
         print("Shelters Not Found")
         return
+
     print("============================")
     print("Find out the shelter. Then You can Update")
     print("1. Search Shelter by ID")
     print("2. Search Shelter by Name")
     print("3. Go Back")
     print("===========================")
+
     choose = input("Enter your choice: ")
-    match(choose):
+
+    found_shelter = None
+
+    match choose:
         case "1":
-            pass
+            shelter_id = int(input("Enter Shelter ID: "))
+
+            for shelter in shelters:
+                if shelter["shelterId"] == shelter_id:
+                    found_shelter = shelter
+                    break
         case "2":
-            pass
+            shelter_name = input("Enter Shelter Name: ")
+
+            for shelter in shelters:
+                if shelter["shelterName"].lower() == shelter_name.lower():
+                    found_shelter = shelter
+                    break
         case "3":
             return
         case _:
             print("Invalid choice. Please try again.")
+            return
+
+    if found_shelter is None:
+        print("Shelter Not Found")
+        return
+
+
+    # Display the current shelter information
+    print("\nCurrent Shelter Information")
+    print("============================")
+    print("ID:", found_shelter["shelterId"])
+    print("Name:", found_shelter["shelterName"])
+    print("District:", found_shelter["district"])
+    print("Capacity:", found_shelter["capacity"])
+    print("Current Occupancy:", found_shelter["currentOccupancy"])
+
+
+    # Update menu
+    while True:
+        print("\nWhat do you want to update?")
+        print("1. Shelter Name")
+        print("2. District")
+        print("3. Capacity")
+        print("4. Current Occupancy")
+        print("5. Done")
+
+        update_choice = input("Enter your choice: ")
+        match update_choice:
+
+            case "1":
+                new_name = input("Enter new Shelter Name: ")
+                found_shelter["shelterName"] = new_name
+                print("Shelter Name Updated Successfully")
+            case "2":
+                new_district = input("Enter new District: ")
+                found_shelter["district"] = new_district
+                print("District Updated Successfully")
+            case "3":
+                new_capacity = int(input("Enter new Capacity: "))
+                # Capacity > occupancy
+                if new_capacity < found_shelter["currentOccupancy"]:
+                    print("Capacity cannot be less than current occupancy")
+                else:
+                    found_shelter["capacity"] = new_capacity
+                    print("Capacity Updated Successfully")
+            case "4":
+                new_occupancy = int(input("Enter new Current Occupancy: "))
+                # Occupancy cannot exceed capacity
+                if new_occupancy > found_shelter["capacity"]:
+                    print("Occupancy cannot exceed capacity")
+                else:
+                    found_shelter["currentOccupancy"] = new_occupancy
+                    print("Current Occupancy Updated Successfully")
+            case "5":
+                break
+            case _:
+                print("Invalid choice")
+
+    # Save updated data
+    save_shelters(shelters)
+    print("\nShelter Updated Successfully")

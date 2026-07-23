@@ -1,10 +1,10 @@
 [
     {
         "shelterId": 1,
-        "shelterName": "Civil Aviation",
+        "shelterName": "Civil",
         "district": "Dhaka",
-        "capacity": 50,
-        "currentOccupancy": 0
+        "capacity": 500,
+        "currentOccupancy": 200
     },
     {
         "shelterId": 2,
