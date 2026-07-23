@@ -93,7 +93,6 @@ def add_shelter():
     else:
         print("Shelters Not Saved")
 
-
 def viw_shelter():
     shelters = load_shelters()
     if len(shelters) == 0:
@@ -107,6 +106,7 @@ def viw_shelter():
         print(f"Shelter Capacity: {shelter["capacity"]}")
         print(f"Current Occupancy: {shelter['currentOccupancy']}")
         print("=============================")
+
 def search_shelter():
     shelters = load_shelters()
     print("============================")
@@ -174,6 +174,28 @@ def search_shelter():
             if not found:
                 print("Shelters Not Found")
         case "4":
+            return
+        case _:
+            print("Invalid choice. Please try again.")
+
+def update_shelter():
+    shelters = load_shelters()
+    if len(shelters) == 0:
+        print("Shelters Not Found")
+        return
+    print("============================")
+    print("Find out the shelter. Then You can Update")
+    print("1. Search Shelter by ID")
+    print("2. Search Shelter by Name")
+    print("3. Go Back")
+    print("===========================")
+    choose = input("Enter your choice: ")
+    match(choose):
+        case "1":
+            pass
+        case "2":
+            pass
+        case "3":
             return
         case _:
             print("Invalid choice. Please try again.")
