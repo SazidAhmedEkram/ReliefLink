@@ -22,9 +22,10 @@ def main():
                 # Implemented by Sazid
                 import shelter_manager
                 shelter_manager.menu()
-
             case "4":
-                pass
+                #Implemented by Sazid
+                import relief_distribution
+                relief_distribution.menu()
             case "5":
                 pass
             case "6":
