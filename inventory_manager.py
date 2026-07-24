@@ -1,8 +1,8 @@
 #Implementation-Borshon Debnath
-
 import json
+# Inventory JSON File
 inventory_file = "data/inventory.json"
-
+# Inventory Menu
 def inventoryMenu():
     while True:
         print("Inventory Management")
@@ -14,29 +14,30 @@ def inventoryMenu():
         print("6.Low Stock Alert")
         print("7.Back")
 
-        option=input("Enter your option")
+        option=input("Enter your option :")
 
         if option == "1":
-            print("Add Item Selected")
+            addItem()
         elif option == "2":
             viewItems()   
         elif option == "3":
-            print("Search Item Selected")
+            searchItem()
         elif option == "4":
-            print("Update Quantity Selected")            
+           updateQuantity()          
         elif option == "5":
-            print("Delete Item Selected")    
+            deleteItem()  
         elif option == "6":
-            print("Low Stock Alert Selected")  
+            lowStockAlert()
         elif option == "7":
             print("Returning to main menu")
+            break
 
         else:
             print("Invalid Option")                                             
-
+# View All Inventory Items
 def viewItems():
     try:
-        with open(inventory_file,"r") as file:
+        with open(inventory_file,"r") as file: # Read all inventory data from the JSON file
             items=json.load(file)
 
         print("-----INVENTORY----")
@@ -49,8 +50,133 @@ def viewItems():
             print("----------------------------")
 
     except FileNotFoundError:
-        print("Inventory file not found.")
+        print("File not found.")
 
+# Search an Item by Item ID
+def searchItem():
+
+    itemId=input("Enter Item ID: ")
+
+    with open(inventory_file,"r") as file:
+        items=json.load(file)
+
+    for item in items:
+
+        if item["itemId"]==itemId:
+
+            print("\nItem Found")
+            print("ID:",item["itemId"])
+            print("Name:",item["itemName"])
+            print("Quantity:",item["quantity"],item["unit"])
+            print("Minimum Stock:",item["minimumStock"])
+            return
+
+    print("Item not found.")
+
+
+# Add a New Inventory Item
+def addItem():
+
+    with open(inventory_file,"r") as file:
+        items=json.load(file)
+
+    itemId=input("Enter Item ID: ")
+
+    for item in items:
+        if item["itemId"]==itemId:
+            print("Item ID already exists.")
+            return
+
+    itemName=input("Enter Item Name: ")
+    quantity=int(input("Enter Quantity: "))
+    unit=input("Enter Unit: ")
+    minimumStock=int(input("Enter Minimum Stock: "))
+
+    # Create a new inventory item using a dictionary
+    newItem={
+    "itemId":itemId,
+    "itemName":itemName,
+    "quantity":quantity,
+    "unit":unit,
+    "minimumStock":minimumStock
+    }
+    items.append(newItem)
+    # Save changes
+    with open(inventory_file,"w") as file:
+        json.dump(items, file,indent=2)
+
+    print("Item Added Successfully.")
+
+# Update Quantity of an Existing Item
+def updateQuantity():
+
+    with open(inventory_file,"r") as file:
+        items=json.load(file)
+
+    itemId=input("Enter Item ID: ")
+
+    for item in items:
+
+        if item["itemId"]==itemId:
+
+            quantity=int(input("Enter New Quantity: "))
+            item["quantity"] = quantity
+
+            with open(inventory_file,"w") as file:
+                json.dump(items,file,indent=2)
+
+            print("Quantity Updated Successfully.")
+            return
+
+    print("Item Not Found.")
+
+# Delete an Item from Inventory
+def deleteItem():
+
+    with open(inventory_file,"r") as file:
+        items=json.load(file)
+
+    itemId=input("Enter Item ID: ")
+
+    for item in items:
+
+        if item["itemId"]==itemId:
+
+            items.remove(item)
+
+            with open(inventory_file,"w") as file:
+                json.dump(items,file,indent=4)
+
+            print("Item Deleted Successfully.")
+            return
+
+    print("Item Not Found.")  
+
+# Display Low Stock Items
+def lowStockAlert():
+
+    with open(inventory_file,"r") as file:
+        items = json.load(file)
+
+    print("Low Stock Items")
+    print("------------")
+    found=False
+
+
+    for item in items:
+
+        if item["quantity"]<=item["minimumStock"]:
+
+            print("Item ID:",item["itemId"])
+            print("Item Name:",item["itemName"])
+            print("Quantity:",item["quantity"], item["unit"])
+            print("Minimum Stock:",item["minimumStock"])
+            print()
+            found=True
+
+    if not found:
+            print("No Low Stock Items.")
+      
 
 if __name__ == "__main__":
     inventoryMenu()        
