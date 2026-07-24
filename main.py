@@ -7,8 +7,8 @@ def main():
         print("2. Relief Inventory") # Borshon
         print("3. Shelter Management") # Sazid
         print("4. Relief Distribution") # Sazid
-        print("5. Reports & Statistics") # Anurag
-        print("6. Save Data")
+        print("5. Reports")       # Anurag
+        print("6. Statistics")    # Anurag
         print("7. Exit")
 
         choice = input("Enter your choice: ")
@@ -28,9 +28,12 @@ def main():
                 import relief_distribution
                 relief_distribution.menu()
             case "5":
-                pass
+                import reports
+                reports.reportMenu()
+
             case "6":
-                pass
+                import statistics
+                statistics.menu()
             case "7":
                 break
             case _:
