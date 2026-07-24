@@ -1,6 +1,5 @@
 #Implemented By Sazid Ahmed Ekram
-import json
-import os
+from file_handler import load_json, save_json
 from datetime import date
 
 # Declare the global variables
@@ -231,24 +230,6 @@ def view_distribution_history():
             print(f"  {item['itemName']} : {item['quantity']} {item['unit']}")
         print("="*40)
 
-def load_json(filename):
-    try:
-        if os.path.isfile(filename):
-            with open(filename) as f:
-                return json.load(f)
-        else:
-            print(f"{filename} not found")
-    except json.JSONDecodeError:
-        return []
-
-def save_json(data, filename):
-    try:
-        with open(filename, "w") as f:
-            json.dump(data, f, indent=4)
-        return True
-    except json.JSONDecodeError:
-        print(f"{filename} not found")
-        return False
 
 def relief_package():
     return {

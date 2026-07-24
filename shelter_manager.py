@@ -1,6 +1,5 @@
 # Implemented by Sazid Ahmed Ekram
-import json
-import os
+from file_handler import load_shelters, save_shelters
 # This is the menu linked to the main.py
 def menu():
     while True:
@@ -37,31 +36,6 @@ def menu():
             case _:
                 print("Invalid choice. Please try again.")
 
-
-
-
-# Load the data from the JSON
-# Convert the Json to Python's list of Dictionary
-def load_shelters():
-    try:
-        if os.path.exists("data/shelters.json"):
-            with open('data/shelters.json', "r") as sf:
-                return json.load(sf)
-        else:
-            print("Shelters.json not found")
-    except json.JSONDecodeError:
-        return []
-
-# Save the data to the JSON
-def save_shelters(data):
-    try:
-        if os.path.exists("data/shelters.json"):
-            with open('data/shelters.json', "w") as sf:
-                json.dump(data, sf, indent=4)
-            return True
-    except json.JSONDecodeError:
-        print("Shelters.json not found")
-        return False
 
 
 def add_shelter():

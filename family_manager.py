@@ -1,40 +1,5 @@
-import json
-import os
+from file_handler import load_families, save_families
 from models import Family
-
-# Load Families from JSON
-def load_families():
-    try:
-        if os.path.exists("data/families.json"):
-            with open("data/families.json", "r") as ff:
-                data = json.load(ff)
-            return data
-        else:
-            return []
-
-    except json.JSONDecodeError:
-        print("families.json contains invalid data.")
-        return []
-
-    except Exception:
-        print("Error loading families.json.")
-        return []
-
-
-# Save Families to JSON
-def save_families(data):
-    try:
-        if os.path.exists("data/families.json"):
-            with open("data/families.json", "w") as ff:
-                json.dump(data, ff, indent=4)
-            return True
-        else:
-            print("families.json not found.")
-            return False
-
-    except Exception:
-        print("Error saving families.json.")
-        return False
 
 
 # Validation Functions

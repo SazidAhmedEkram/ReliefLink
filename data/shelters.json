@@ -19,5 +19,12 @@
         "district": "chittagong",
         "capacity": 400,
         "currentOccupancy": 0
+    },
+    {
+        "shelterId": 21,
+        "shelterName": "Aftabnagar",
+        "district": "Dhaka",
+        "capacity": 10,
+        "currentOccupancy": 0
     }
 ]

@@ -1,7 +1,6 @@
 #Implementation-Borshon Debnath
-import json
-# Inventory JSON File
-inventory_file = "data/inventory.json"
+from file_handler import load_inventory, save_inventory
+
 # Inventory Menu
 def inventoryMenu():
     while True:
@@ -37,8 +36,7 @@ def inventoryMenu():
 # View All Inventory Items
 def viewItems():
     try:
-        with open(inventory_file,"r") as file: # Read all inventory data from the JSON file
-            items=json.load(file)
+        items = load_inventory()
 
         print("-----INVENTORY----")
 
@@ -57,8 +55,7 @@ def searchItem():
 
     itemId=input("Enter Item ID: ")
 
-    with open(inventory_file,"r") as file:
-        items=json.load(file)
+    items = load_inventory()
 
     for item in items:
 
@@ -77,8 +74,7 @@ def searchItem():
 # Add a New Inventory Item
 def addItem():
 
-    with open(inventory_file,"r") as file:
-        items=json.load(file)
+    items = load_inventory()
 
     itemId=input("Enter Item ID: ")
 
@@ -102,16 +98,14 @@ def addItem():
     }
     items.append(newItem)
     # Save changes
-    with open(inventory_file,"w") as file:
-        json.dump(items, file,indent=2)
+    save_inventory(items)
 
     print("Item Added Successfully.")
 
 # Update Quantity of an Existing Item
 def updateQuantity():
 
-    with open(inventory_file,"r") as file:
-        items=json.load(file)
+    items = load_inventory()
 
     itemId=input("Enter Item ID: ")
 
@@ -122,8 +116,7 @@ def updateQuantity():
             quantity=int(input("Enter New Quantity: "))
             item["quantity"] = quantity
 
-            with open(inventory_file,"w") as file:
-                json.dump(items,file,indent=2)
+            save_inventory(items)
 
             print("Quantity Updated Successfully.")
             return
@@ -133,8 +126,7 @@ def updateQuantity():
 # Delete an Item from Inventory
 def deleteItem():
 
-    with open(inventory_file,"r") as file:
-        items=json.load(file)
+    items = load_inventory()
 
     itemId=input("Enter Item ID: ")
 
@@ -144,8 +136,7 @@ def deleteItem():
 
             items.remove(item)
 
-            with open(inventory_file,"w") as file:
-                json.dump(items,file,indent=4)
+            save_inventory(items)
 
             print("Item Deleted Successfully.")
             return
@@ -155,8 +146,7 @@ def deleteItem():
 # Display Low Stock Items
 def lowStockAlert():
 
-    with open(inventory_file,"r") as file:
-        items = json.load(file)
+    items = load_inventory()
 
     print("Low Stock Items")
     print("------------")
