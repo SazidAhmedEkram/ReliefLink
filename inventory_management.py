@@ -1,4 +1,6 @@
 #Implimentation-Borshon Debnath
+import json
+from inventory_management import InventoryItem
 class InventoryItem:
     def __init__(self,itemId,itemName,quantity,unit,minimumStock):
         self.itemId=itemId
@@ -7,6 +9,7 @@ class InventoryItem:
         self.unit=unit
         self.minimumStock=minimumStock
 
+    #load data into json
     def to_inventory_json(self):
         return{
         "itemId":self.itemId,
