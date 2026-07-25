@@ -16,9 +16,10 @@ def main():
         match(choice):
             case "1":
                 import family_manager
-                family_manager.menu()   
+                family_manager.family_menu()
             case "2":
-                pass
+                import inventory_manager
+                inventory_manager.inventoryMenu()
             case "3":
                 # Implemented by Sazid
                 import shelter_manager

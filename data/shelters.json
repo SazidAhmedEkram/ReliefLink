@@ -7,13 +7,6 @@
         "currentOccupancy": 200
     },
     {
-        "shelterId": 2,
-        "shelterName": "Dhonia Para",
-        "district": "Shylhet",
-        "capacity": 90,
-        "currentOccupancy": 0
-    },
-    {
         "shelterId": 3,
         "shelterName": "Dokkhin Nowa Para",
         "district": "chittagong",
@@ -26,5 +19,12 @@
         "district": "Dhaka",
         "capacity": 10,
         "currentOccupancy": 0
+    },
+    {
+        "shelterId": 100,
+        "shelterName": "NakhalPara",
+        "district": "Dhaka",
+        "capacity": 1000,
+        "currentOccupancy": 500
     }
 ]

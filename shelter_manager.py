@@ -28,9 +28,9 @@ def menu():
             case "5":
                 delete_shelter()
             case "6":
-                pass
+                allocate_family()
             case "7":
-                pass
+                remove_family()
             case "8":
                 return
             case _:
