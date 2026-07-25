@@ -4,9 +4,9 @@
 
 ## Project Overview
 
-Natural disasters such as floods, cyclones, and landslides affect thousands of families every year. Relief organizations often manage beneficiary information, relief supplies, and shelter allocation manually, which can lead to duplicate registrations, incorrect distributions, inventory shortages, and inefficient reporting.
+Floods, cyclones, landslides, and other natural calamities impact many households annually in Bangladesh. Relief agencies normally handle beneficiary registration, distribution of relief materials, and accommodation manually, which may cause duplications in beneficiary registration, wrong relief material distribution, insufficient stock of relief items, and poor reporting.
 
-ReliefLink helps solve these problems by providing a simple command-line system that stores data in JSON files and uses NumPy for basic analysis.
+ReliefLink is a solution that addresses all of these issues through a straightforward command-line interface that saves data using JSON files and NumPy for analysis.
 
 ## Objectives
 
@@ -19,8 +19,7 @@ ReliefLink helps solve these problems by providing a simple command-line system 
 
 ## Target Users
 
-* NGOs
-* Relief organizations
+* Relief organizations such as As Sunnah Foundation
 * Volunteers
 * Disaster management teams
 * Local government authorities
@@ -32,6 +31,7 @@ ReliefLink helps solve these problems by providing a simple command-line system 
 * JSON
 * Object-Oriented Programming (OOP)
 * Console-based interface
+* PyCharm
 
 ## Features
 
@@ -74,7 +74,7 @@ Operations:
 * Delete shelter
 * Allocate family
 * Remove family
-* Validate capacity
+* View families in shelters
 
 ### Relief Distribution
 
@@ -128,8 +128,6 @@ The application loads existing data at startup and saves updated information bef
 ## Data Structures Used
 
 * **List**: store families, shelters, inventory, and distribution records
-* **Tuple**: store fixed values such as damage levels and package types
-* **Set**: prevent duplicate relief distribution
 * **Dictionary**: store record details as key-value pairs
 
 ## Object-Oriented Design
@@ -144,6 +142,9 @@ Stores:
 * District
 * Village
 * Members
+* Children
+* Elderly
+* Disabled members
 * Damage level
 * Shelter needed
 * Relief status
@@ -152,8 +153,11 @@ Stores:
 
 Stores:
 
+* Item id
 * Item name
 * Quantity
+* Unit
+* Minimum stock
 
 ### Shelter
 
@@ -164,6 +168,7 @@ Stores:
 * District
 * Capacity
 * Occupied seats
+* Familes
 
 ### Distribution
 
@@ -205,8 +210,11 @@ RELIEFLINK MAIN MENU
 ```text
 ReliefLink/
 ├── main.py
-├── manager.py
+├── family_manager.py
+├── inventory_management.py
+├── inventory_manager.py
 ├── models.py
+├── modules.py
 ├── validation.py
 ├── file_handler.py
 ├── statistics.py
@@ -241,38 +249,25 @@ The system handles:
 * Overall project architecture
 * Main menu and application flow
 * ReliefManager implementation
-* Module integration
-* Git repository management
-* Final testing
-* Documentation and presentation
+* Shelter management implementation
+
 
 ### Easha
 
-* Family class
-* Add family
-* View family
-* Search family
-* Update family
-* Delete family
-* Input validation
-* Duplicate ID prevention
+* Family management implementation
+* Family CRUD
 
 ### Borshon
 
 * Inventory management
-* Shelter management
-* Shelter allocation
-* Capacity validation
 * Inventory CRUD
 
 ### Anurag
 
 * JSON file handling
-* Exception handling
 * Report generation
 * Distribution history
 * NumPy statistical analysis
-* Data persistence
 
 ## Future Improvements
 
@@ -286,24 +281,6 @@ The system handles:
 * Mobile application
 * GIS map integration
 
-## Course Learning Outcomes
-
-This project demonstrates:
-
-* Variables and data types
-* Operators
-* Conditional statements
-* Loops
-* Functions
-* Object-oriented programming
-* Lists
-* Tuples
-* Sets
-* Dictionaries
-* JSON file handling
-* Exception handling
-* NumPy
-* Modular programming
 
 ## License
 
