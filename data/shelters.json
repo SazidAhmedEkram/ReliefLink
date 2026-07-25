@@ -4,7 +4,11 @@
         "shelterName": "Civil",
         "district": "Dhaka",
         "capacity": 500,
-        "currentOccupancy": 200
+        "currentOccupancy": 209,
+        "families": [
+            "F001",
+            "F002"
+        ]
     },
     {
         "shelterId": 3,

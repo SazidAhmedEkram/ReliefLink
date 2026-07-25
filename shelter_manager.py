@@ -1,5 +1,5 @@
 # Implemented by Sazid Ahmed Ekram
-from file_handler import load_shelters, save_shelters
+from file_handler import load_shelters, save_shelters, load_families
 # This is the menu linked to the main.py
 def menu():
     while True:
@@ -13,7 +13,9 @@ def menu():
         print("5. Delete Shelter")
         print("6. Allocate Family")
         print("7. Remove Family")
-        print("8. Go Back")
+        print("8. View Families In Shelter")
+        print("9. Go back")
+
 
         choose = input("Enter your choice: ")
         match(choose):
@@ -32,6 +34,8 @@ def menu():
             case "7":
                 remove_family()
             case "8":
+                view_shelter_families()
+            case "9":
                 return
             case _:
                 print("Invalid choice. Please try again.")
@@ -317,3 +321,237 @@ def delete_shelter():
         print("Shelter deleted successfully.")
     else:
         print("Delete operation cancelled.")
+
+
+
+
+#  Implements the Allocate Family Function
+
+def allocate_family():
+    shelters = load_shelters()
+    families = load_families()
+
+    if len(shelters) == 0:
+        print("Shelters Not Found")
+        return
+
+    print("============================")
+    print("Allocate Family")
+    print("1. Search Shelter By ID")
+    print("2. Search Shelter By Name")
+    print("3. Go Back")
+    print("============================")
+
+    choose = input("Enter your choice: ")
+    found_shelter = None
+    match choose:
+        case "1":
+            shelter_id = int(input("Enter Shelter ID: "))
+
+            for shelter in shelters:
+                if shelter["shelterId"] == shelter_id:
+                    found_shelter = shelter
+                    break
+        case "2":
+            shelter_name = input("Enter Shelter Name: ")
+
+            for shelter in shelters:
+                if shelter["shelterName"].lower() == shelter_name.lower():
+                    found_shelter = shelter
+                    break
+        case "3":
+            return
+        case _:
+            print("Invalid Choice")
+            return
+
+    if found_shelter is None:
+        print("Shelter Not Found")
+        return
+
+    family_id = input("Enter Family ID To Allocate: ")
+
+    # Find family
+    found_family = None
+    for family in families:
+        if family["familyId"] == family_id:
+            found_family = family
+            break
+
+    if found_family is None:
+        print("Family Not Found")
+        return
+
+    # Check already allocated
+
+    if "families" not in found_shelter:
+        found_shelter["families"] = []
+
+    if family_id in found_shelter["families"]:
+        print("Family already allocated in this shelter")
+        return
+
+    members = found_family["members"]
+
+    # Check capacity
+
+    if found_shelter["currentOccupancy"] + members > found_shelter["capacity"]:
+        print("Not enough space available")
+        return
+
+    # Allocate
+
+    found_shelter["families"].append(family_id)
+    found_shelter["currentOccupancy"] += members
+
+    save_shelters(shelters)
+    print("============================")
+    print("Family Allocated Successfully")
+    print("Family ID:", family_id)
+    print("Shelter:", found_shelter["shelterName"])
+    print("Members:", members)
+
+def remove_family():
+    shelters = load_shelters()
+    families = load_families()
+
+    if len(shelters) == 0:
+        print("Shelters Not Found")
+        return
+
+    print("============================")
+    print("Remove Family")
+    print("1. Search Shelter By ID")
+    print("2. Search Shelter By Name")
+    print("3. Go Back")
+    print("============================")
+
+    choose = input("Enter your choice: ")
+    found_shelter = None
+    match choose:
+        case "1":
+            shelter_id = int(input("Enter Shelter ID: "))
+            for shelter in shelters:
+                if shelter["shelterId"] == shelter_id:
+                    found_shelter = shelter
+                    break
+        case "2":
+            shelter_name = input("Enter Shelter Name: ")
+            for shelter in shelters:
+                if shelter["shelterName"].lower() == shelter_name.lower():
+                    found_shelter = shelter
+                    break
+        case "3":
+            return
+        case _:
+            print("Invalid Choice")
+            return
+
+    if found_shelter is None:
+        print("Shelter Not Found")
+        return
+
+    family_id = input("Enter Family ID: ")
+    if "families" not in found_shelter:
+        print("No family allocated")
+        return
+
+    if family_id not in found_shelter["families"]:
+        print("Family not found in this shelter")
+        return
+
+    # Find family members
+    members = 0
+
+    for family in families:
+        if family["familyId"] == family_id:
+            members = family["members"]
+            break
+
+    # Remove family
+    found_shelter["families"].remove(family_id)
+    found_shelter["currentOccupancy"] -= members
+    save_shelters(shelters)
+
+    print("============================")
+    print("Family Removed Successfully")
+    print("Family ID:", family_id)
+    print("Shelter:", found_shelter["shelterName"])
+    print("Removed Members:", members)
+
+#  Viwe the families inside a Particular shelter
+def view_shelter_families():
+    shelters = load_shelters()
+    families = load_families()
+
+    if len(shelters) == 0:
+        print("Shelters Not Found")
+        return
+
+    print("============================")
+    print("Find Shelter")
+    print("1. Search By Shelter ID")
+    print("2. Search By Shelter Name")
+    print("3. Go Back")
+    print("============================")
+
+    choose = input("Enter your choice: ")
+    found_shelter = None
+
+    match choose:
+        case "1":
+            shelter_id = int(input("Enter Shelter ID: "))
+            for shelter in shelters:
+                if shelter["shelterId"] == shelter_id:
+                    found_shelter = shelter
+                    break
+        case "2":
+            shelter_name = input("Enter Shelter Name: ")
+            for shelter in shelters:
+                if shelter["shelterName"].lower() == shelter_name.lower():
+                    found_shelter = shelter
+                    break
+        case "3":
+            return
+        case _:
+            print("Invalid Choice")
+            return
+
+    if found_shelter is None:
+        print("Shelter Not Found")
+        return
+
+    print("============================")
+    print("Shelter Information")
+    print("============================")
+    print("Shelter ID:", found_shelter["shelterId"])
+    print("Shelter Name:", found_shelter["shelterName"])
+    print("District:", found_shelter["district"])
+    print("Current Occupancy:", found_shelter["currentOccupancy"])
+
+    if "families" not in found_shelter or len(found_shelter["families"]) == 0:
+        print("\nNo Families Allocated")
+        return
+
+    print("\nAllocated Families")
+    print("============================")
+    count = 1
+
+    for family_id in found_shelter["families"]:
+        for family in families:
+            if family["familyId"] == family_id:
+                print("\nFamily", count)
+                print("----------------------------")
+                print("Family ID:", family["familyId"])
+                print("Head Name:", family["headName"])
+                print("Phone:", family["phone"])
+                print("District:", family["district"])
+                print("Upazila:", family["upazila"])
+                print("Village:", family["village"])
+                print("Members:", family["members"])
+                print("Children:", family["children"])
+                print("Elderly:", family["elderly"])
+                print("Disabled Members:", family["disabledMembers"])
+                print("Damage Level:", family["damageLevel"])
+                count += 1
+                break
