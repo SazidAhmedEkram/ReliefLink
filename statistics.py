@@ -1,6 +1,5 @@
 # Anurag will work on
 
-
 import numpy as np
 from file_handler import load_families
 from file_handler import load_inventory

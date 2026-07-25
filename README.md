@@ -200,8 +200,8 @@ RELIEFLINK MAIN MENU
 2. Relief Inventory
 3. Shelter Management
 4. Relief Distribution
-5. Reports & Statistics
-6. Save Data
+5. Reports 
+6. Statistics
 7. Exit
 ```
 
@@ -215,11 +215,12 @@ ReliefLink/
 ├── inventory_manager.py
 ├── models.py
 ├── modules.py
-├── validation.py
 ├── file_handler.py
 ├── statistics.py
-├── menu.py
-├── utils.py
+├── relief_distribution.py
+├── reports.py
+├── shelter_management.py
+├── shelter_manager.py
 ├── data/
 │   ├── families.json
 │   ├── inventory.json
@@ -271,14 +272,15 @@ The system handles:
 
 ## Future Improvements
 
-* Tkinter GUI version
+* Tkinter or PyQt5 GUI version
+* Web based version
+* Mobile application
 * QR code family identification
 * Role-based login system
 * PDF report generation
 * SMS notification
 * Barcode-based inventory
 * Cloud database integration
-* Mobile application
 * GIS map integration
 
 
