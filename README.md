@@ -262,6 +262,7 @@ The system handles:
 
 * Inventory management
 * Inventory CRUD
+* Project Report
 
 ### Anurag
 
