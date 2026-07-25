@@ -16,7 +16,7 @@ def menu():
         print("You need to search a Family to distribute the relief")
         print("1. Search Family By ID")
         print("2. Search Family By Name")
-        print("3. Search Inventory By Phone Number")
+        print("3. Search Family By Phone Number")
         print("4. Go Back")
 
         choice = input("Enter your choice: ")
@@ -29,11 +29,11 @@ def menu():
                     if family_id.lower() == family["familyId"].lower():
                         found = True
                         display_family(family)
+                        display_current_status(family)
+
                         if check_current_status(family):
-                            display_current_status(family)
                             relief_distribution(family)
-                        else:
-                            display_current_status(family)
+                            break
 
             case "2":
                 family_name = input("Enter Family's Head Name: ")
@@ -41,11 +41,11 @@ def menu():
                     if family_name.lower() == family["headName"].lower():
                         found = True
                         display_family(family)
+                        display_current_status(family)
+
                         if check_current_status(family):
-                            display_current_status(family)
                             relief_distribution(family)
-                        else:
-                            display_current_status(family)
+                            break
 
             case "3":
                 phone_number = input("Enter Family's Phone Number: ")
@@ -53,11 +53,11 @@ def menu():
                     if phone_number == family["phone"]:
                         found = True
                         display_family(family)
+                        display_current_status(family)
+
                         if check_current_status(family):
-                            display_current_status(family)
                             relief_distribution(family)
-                        else:
-                            display_current_status(family)
+                            break
 
             case "4":
                 return
@@ -97,23 +97,36 @@ def check_current_status(family):
 
 def display_current_status(family):
     if check_current_status(family):
-        print("This family has already received the relief")
+        print("This family is eligible for the relief.")
     else:
-        print("This family is eligible for the relief")
+        print("This family has already received the relief.")
     print("------------------------------------------------------------")
 
 def relief_distribution(family):
     if not family["receivedRelief"]:
         package_status = ""
-        if family["damageLevel"] == "High":
-            print("Damage Level: High. This family will receive the Large Relief package")
+        if family["damageLevel"] == "Extreme":
+            print("Damage Level: Extreme")
+            print("This family will receive the Extreme Relief Package")
+            package_status = "Extreme"
+
+        elif family["damageLevel"] == "High":
+            print("Damage Level: High")
+            print("This family will receive the Large Relief Package")
             package_status = "Large"
+
         elif family["damageLevel"] == "Medium":
-            print("Damage Level: Medium. This family will receive the Medium Relief package")
+            print("Damage Level: Medium")
+            print("This family will receive the Medium Relief Package")
             package_status = "Medium"
+
         elif family["damageLevel"] == "Low":
-            print("Damage Level: Low. This family will receive the Small Relief package")
+            print("Damage Level: Low")
+            print("This family will receive the Small Relief Package")
             package_status = "Small"
+        else:
+            print("Invalid damage level.")
+            return
 
         # Check the inventory if there is an enough stock
         if not check_inventory(package_status):
@@ -146,7 +159,7 @@ def check_inventory(package_name):
     for item_name, required_qty in package.items():
         found = False
         for item in inventory:
-            if item["itemName"] == item_name:
+            if item["itemName"].lower() == item_name.lower():
                 found = True
 
                 if item["quantity"] < required_qty:
@@ -166,7 +179,7 @@ def update_inventory(package_name):
     package = relief_package()[package_name]
 
     for item in inventory:
-        if item["itemName"] in package:
+        if item["itemName"] in package.keys():
             item["quantity"] -= package[item["itemName"]]
 
     save_json(inventory, inventory_file)

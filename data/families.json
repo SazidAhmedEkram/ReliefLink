@@ -42,7 +42,7 @@
         "disabledMembers": 1,
         "damageLevel": "High",
         "shelterNeeded": true,
-        "receivedRelief": false
+        "receivedRelief": true
     },
     {
         "familyId": "F004",
