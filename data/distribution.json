@@ -66,5 +66,34 @@
                 "unit": "box"
             }
         ]
+    },
+    {
+        "distributionId": "D003",
+        "date": "2026-07-25",
+        "familyId": "10",
+        "headName": "Borshon",
+        "package": "Medium",
+        "items": [
+            {
+                "itemName": "Rice",
+                "quantity": 10,
+                "unit": "kg"
+            },
+            {
+                "itemName": "Water",
+                "quantity": 12,
+                "unit": "bottle"
+            },
+            {
+                "itemName": "Blanket",
+                "quantity": 2,
+                "unit": "piece"
+            },
+            {
+                "itemName": "Medicine",
+                "quantity": 1,
+                "unit": "box"
+            }
+        ]
     }
 ]

@@ -2,28 +2,28 @@
     {
         "itemId": "I001",
         "itemName": "Rice",
-        "quantity": 470,
+        "quantity": 460,
         "unit": "kg",
         "minimumStock": 100
     },
     {
         "itemId": "I002",
         "itemName": "Water",
-        "quantity": 1164,
+        "quantity": 1152,
         "unit": "bottle",
         "minimumStock": 300
     },
     {
         "itemId": "I003",
         "itemName": "Blanket",
-        "quantity": 143,
+        "quantity": 141,
         "unit": "piece",
         "minimumStock": 50
     },
     {
         "itemId": "I004",
         "itemName": "Medicine",
-        "quantity": 77,
+        "quantity": 76,
         "unit": "box",
         "minimumStock": 100
     },
