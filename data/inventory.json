@@ -2,35 +2,35 @@
     {
         "itemId": "I001",
         "itemName": "Rice",
-        "quantity": 470,
+        "quantity": 450,
         "unit": "kg",
         "minimumStock": 100
     },
     {
         "itemId": "I002",
         "itemName": "Water",
-        "quantity": 1164,
+        "quantity": 1140,
         "unit": "bottle",
         "minimumStock": 300
     },
     {
         "itemId": "I003",
         "itemName": "Blanket",
-        "quantity": 143,
+        "quantity": 138,
         "unit": "piece",
         "minimumStock": 50
     },
     {
         "itemId": "I004",
         "itemName": "Medicine",
-        "quantity": 77,
+        "quantity": 75,
         "unit": "box",
         "minimumStock": 100
     },
     {
         "itemId": "I005",
         "itemName": "Baby Food",
-        "quantity": 57,
+        "quantity": 54,
         "unit": "packet",
         "minimumStock": 50
     },
@@ -44,7 +44,7 @@
     {
         "itemId": "I007",
         "itemName": "Hygiene Kit",
-        "quantity": 88,
+        "quantity": 86,
         "unit": "kit",
         "minimumStock": 100
     },
