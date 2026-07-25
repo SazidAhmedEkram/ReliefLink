@@ -200,8 +200,8 @@ RELIEFLINK MAIN MENU
 2. Relief Inventory
 3. Shelter Management
 4. Relief Distribution
-5. Reports & Statistics
-6. Save Data
+5. Reports 
+6. Statistics
 7. Exit
 ```
 

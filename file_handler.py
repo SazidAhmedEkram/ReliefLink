@@ -5,16 +5,13 @@
 
 import json
 
-# File Paths
 FAMILY_FILE = "data/families.json"
 INVENTORY_FILE = "data/inventory.json"
 SHELTER_FILE = "data/shelters.json"
 DISTRIBUTION_FILE = "data/distribution.json"
 
 
-# -----------------------------
-# Load Data From JSON File
-# -----------------------------
+#load data to json file
 def load_json(filename):
 
     try:
@@ -35,9 +32,7 @@ def load_json(filename):
         return []
 
 
-# -----------------------------
-# Save Data To JSON File
-# -----------------------------
+# Save Data to json file
 def save_json(data, filename):
 
     try:
@@ -51,9 +46,7 @@ def save_json(data, filename):
         return False
 
 
-# -----------------------------
-# Family File
-# -----------------------------
+# Family 
 def load_families():
     return load_json(FAMILY_FILE)
 
@@ -62,9 +55,7 @@ def save_families(families):
     return save_json(families, FAMILY_FILE)
 
 
-# -----------------------------
-# Inventory File
-# -----------------------------
+# Inventory 
 def load_inventory():
     return load_json(INVENTORY_FILE)
 
@@ -73,9 +64,7 @@ def save_inventory(inventory):
     return save_json(inventory, INVENTORY_FILE)
 
 
-# -----------------------------
-# Shelter File
-# -----------------------------
+# Shelter
 def load_shelters():
     return load_json(SHELTER_FILE)
 
@@ -84,9 +73,7 @@ def save_shelters(shelters):
     return save_json(shelters, SHELTER_FILE)
 
 
-# -----------------------------
-# Distribution File
-# -----------------------------
+# Distribution 
 def load_distribution():
     return load_json(DISTRIBUTION_FILE)
 

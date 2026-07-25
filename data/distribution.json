@@ -66,5 +66,44 @@
                 "unit": "box"
             }
         ]
+    },
+    {
+        "distributionId": "D003",
+        "date": "2026-07-25",
+        "familyId": "F003",
+        "headName": "Mohammad Ali",
+        "package": "Large",
+        "items": [
+            {
+                "itemName": "Rice",
+                "quantity": 20,
+                "unit": "kg"
+            },
+            {
+                "itemName": "Water",
+                "quantity": 24,
+                "unit": "bottle"
+            },
+            {
+                "itemName": "Blanket",
+                "quantity": 5,
+                "unit": "piece"
+            },
+            {
+                "itemName": "Medicine",
+                "quantity": 2,
+                "unit": "box"
+            },
+            {
+                "itemName": "Baby Food",
+                "quantity": 3,
+                "unit": "packet"
+            },
+            {
+                "itemName": "Hygiene Kit",
+                "quantity": 2,
+                "unit": "kit"
+            }
+        ]
     }
 ]

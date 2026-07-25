@@ -42,7 +42,7 @@
         "disabledMembers": 1,
         "damageLevel": "High",
         "shelterNeeded": true,
-        "receivedRelief": false
+        "receivedRelief": true
     },
     {
         "familyId": "F004",
@@ -223,5 +223,20 @@
         "damageLevel": "Low",
         "shelterNeeded": true,
         "receivedRelief": false
+    },
+    {
+        "familyId": "10",
+        "headName": "Borshon",
+        "phone": "01413951432",
+        "district": "Dhaka",
+        "upazila": "Dhanmondi",
+        "village": "Dhanmondi",
+        "members": 5,
+        "children": 2,
+        "elderly": 3,
+        "disabledMembers": 0,
+        "damageLevel": "Medium",
+        "shelterNeeded": true,
+        "receivedRelief": true
     }
 ]
