@@ -4,7 +4,7 @@ from file_handler import load_inventory, save_inventory
 # Inventory Menu
 def inventoryMenu():
     while True:
-        print("=============================")
+        print("==============================")
         print("Inventory Management")
         print("=============================")
         print("1.Add Item")
